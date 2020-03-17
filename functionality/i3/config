@@ -180,3 +180,5 @@ client.unfocused	#26323833 #26323833 #ffffff #292d2e #00000099
 # Lock screen
 bindsym $mod+l exec systemctl suspend
 exec dunst
+exec compton&
+exec nitrogen --restore

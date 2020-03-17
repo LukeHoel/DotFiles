@@ -1,0 +1,16 @@
+* {
+    background-color:            rgba ( 0, 0, 0, 0 % );
+    color: white;
+}
+#window {
+    background-color:                  rgba ( 30, 000, 60, 70 % );
+}
+#mainbox {
+	padding: 5px;
+}
+#element {
+	padding: 1px;
+}
+#element.selected {
+    background-color: rgba(255,255,255, 20%);
+}
