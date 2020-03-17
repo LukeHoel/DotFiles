@@ -1,0 +1,68 @@
+[global]
+    monitor = 0
+
+    transparency = 20
+
+    # Formatting
+    geometry = "300x20-30+20"
+    padding = 5	
+    corner_radius = 4
+
+    word_wrap = yes
+    ellipsize = middle
+
+    stack_duplicates = true
+
+    indicate_hidden = yes
+
+    # Sort messages by urgency.
+    sort = yes
+
+    # Time based effect
+    idle_threshold = 120
+    show_age_threshold = 60
+
+    ### Text ###
+
+    font = Monospace 8
+
+    markup = full
+    format = "<b>%s</b>\n%b"
+
+    alignment = left
+
+    # Ignore newlines '\n' in notifications.
+    ignore_newline = no
+
+    # Display indicators for URLs (U) and actions (A).
+    show_indicators = yes
+
+    # Icons
+    icon_position = left
+    max_icon_size = 32
+
+    # Internal to dunst	
+    title = Dunst
+    class = Dunst
+    verbosity = mesg
+
+    ### mouse
+    mouse_left_click = close_current
+    mouse_middle_click = do_action
+    mouse_right_click = close_all
+
+[urgency_low]
+    background = "#330066"
+    foreground = "#888888"
+    timeout = 10
+
+[urgency_normal]
+    background = "#500099"
+    foreground = "#ffffff"
+    timeout = 10
+
+[urgency_critical]
+    background = "#ff0099"
+    foreground = "#ffffff"
+    frame_color = "#ff0000"
+    timeout = 0
