@@ -1,0 +1,23 @@
+#!/bin/bash
+if [ $# -gt 0 ]
+then
+	if [ $# -eq 1 ]
+	then
+		origin="origin"
+		message="$1"
+	else
+		origin="$1"
+		message="$2"
+	fi
+			read -p "Confirm check in '$message' (1 or 0): " yn
+				if [ $yn -eq 1 ]
+			then
+				# Cache login
+				git config credential.helper store
+				git add .
+				git commit -m "$message"
+				git push $origin $(git rev-parse --abbrev-ref HEAD) 
+			fi
+else
+	echo "[Usage]: check-in 'origin' 'check in message'"
+fi
