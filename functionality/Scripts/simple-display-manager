@@ -1,0 +1,13 @@
+#!/bin/sh
+
+options=("Dynamic Window Manager" "i3 Window Manager")
+scripts=("dwm" "i3" "")
+
+PS3='Choose your WM/DE: '
+select opt in "${options[@]}"
+do
+    if [ ! -z ${scripts[$REPLY - 1]} ]; then
+        WINDOWMANAGER=${scripts[$REPLY - 1]} startx
+        break
+    fi
+done
