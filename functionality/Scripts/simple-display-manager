@@ -1,13 +1,26 @@
-#!/bin/sh
+#!/bin/bash
 
-options=("Dynamic Window Manager" "i3 Window Manager")
-scripts=("dwm" "i3" "")
+get_installed_xsessions() {
+	names=()
+	executables=()
+	xsessions=($(ls /usr/share/xsessions/*.desktop))
+	for xsession in ${xsessions[@]}; do
+		names+=("$(awk -F '=' '/^Name=/ {print $2}' $xsession)")
+		executables+=("$(awk -F '=' '/^Exec=/ {print $2}' $xsession)")
+	done
+	executables+=("")
+}
 
-PS3='Choose your WM/DE: '
-select opt in "${options[@]}"
-do
-    if [ ! -z ${scripts[$REPLY - 1]} ]; then
-        WINDOWMANAGER=${scripts[$REPLY - 1]} startx
-        break
-    fi
-done
+choose_xsession() {
+	PS3='Choose a WM/DE for your X session: '
+	select opt in "${names[@]}"
+	do
+	    if [ ! -z ${executables[$REPLY - 1]} ]; then
+		WINDOWMANAGER=${executables[$REPLY - 1]} startx
+		break
+	    fi
+	done
+}
+
+get_installed_xsessions
+choose_xsession
