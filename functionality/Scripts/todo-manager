@@ -2,12 +2,21 @@
 
 add="Add todo"
 remove="Remove todo"
+quit="Quit"
 
-case "$(echo -e "$add\n$remove" | dmenu)" in
+while :
+do
+
+case "$(echo -e "$add\n$remove\n$quit" | dmenu)" in
 	"$add")
 		cat ~/.todo-list | dmenu -l 10 -p "$add" >> ~/.todo-list
 	;;
 	"$remove")
 		sed -i "/^$(cat ~/.todo-list | dmenu -l 10 -p "$remove")$/d" ~/.todo-list
 	;;
+	"$quit")
+		break
+	;;
 esac
+
+done
